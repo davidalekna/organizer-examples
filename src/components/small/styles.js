@@ -3,7 +3,6 @@ import { FlexRow, FlexCol } from '../globals';
 
 export const Wrapper = styled(FlexCol)`
   padding: 20px;
-  border-bottom: 1px solid #ddd;
   cursor: default;
   user-select: none;
 `;
