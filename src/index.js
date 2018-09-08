@@ -10,7 +10,7 @@ import BigCalendar from './components/big';
 import events from './events';
 
 class App extends React.Component {
-  state = { events };
+  state = { events, currentDay: new Date() };
   addEvent = event => {
     this.setState(state => ({
       events: [...state.events, event],
@@ -34,6 +34,9 @@ class App extends React.Component {
                     <H1>{`📅 Calendar`}</H1>
                     <FlexRow>
                       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      <button onClick={() => selectDate({ date: new Date() })}>
+                        today
+                      </button>
                       <button onClick={subCalendarMonth}>prev</button>
                       <button onClick={addCalendarMonth}>next</button>
                       <H1>{`${fullMonth.name} ${fullMonth.year}`}</H1>

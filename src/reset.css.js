@@ -31,4 +31,13 @@ injectGlobal`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
       sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   }
+
+  /* TEMPORARY BUTTON STYLE */
+  button {
+    padding: 0 5px;
+    background: #ddd;
+    margin-left: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
 `;
