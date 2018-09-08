@@ -2,37 +2,33 @@ import React from 'react';
 import DatesBrowser from 'react-dates-browser';
 import { Day, Toolbar, Wrapper, Grid, GridItem } from './styles';
 
-const SmallCalendar = () => (
+const SmallCalendar = ({ selectDate }) => (
   <DatesBrowser>
     {({ addCalendarMonth, subCalendarMonth, days, getFullMonth }) => {
-      const { prev, current, next } = getFullMonth();
+      const fullMonth = getFullMonth();
       return (
         <Wrapper>
           <Toolbar>
-            <div>{`${current.name} ${current.year}`}</div>
+            <div>{`${fullMonth.name} ${fullMonth.year}`}</div>
             <div>
-              <button onClick={addCalendarMonth}>prev</button>
+              <button onClick={subCalendarMonth}>prev</button>
               &nbsp;
-              <button onClick={subCalendarMonth}>next</button>
+              <button onClick={addCalendarMonth}>next</button>
             </div>
           </Toolbar>
           <Grid>
             {days.map((day, index) => (
               <GridItem key={index}>{day.slice(0, 1)}</GridItem>
             ))}
-            {prev.days.map((day, index) => (
-              <GridItem key={index} offset>
-                <Day>{day.day}</Day>
-              </GridItem>
-            ))}
-            {current.days.map((day, index) => (
-              <GridItem key={index} current={day.today}>
-                <Day>{day.day}</Day>
-              </GridItem>
-            ))}
-            {next.days.map((day, index) => (
-              <GridItem key={index} offset>
-                <Day>{day.day}</Day>
+            {fullMonth.days.map((day, index) => (
+              <GridItem key={index}>
+                <Day
+                  offset={day.offset}
+                  current={day.today}
+                  onClick={() => selectDate({ date: day.date })}
+                >
+                  {day.day}
+                </Day>
               </GridItem>
             ))}
           </Grid>

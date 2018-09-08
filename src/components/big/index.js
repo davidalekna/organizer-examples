@@ -2,16 +2,10 @@ import React from 'react';
 import { Main, Day } from './styles';
 
 const BigCalendar = ({ fullMonth }) => {
-  const { prev, current, next } = fullMonth;
   return (
     <Main>
-      {prev.days.map((day, index) => (
-        <Day key={index} offset>
-          {day.day}
-        </Day>
-      ))}
-      {current.days.map((day, index) => (
-        <Day key={index} current={day.today}>
+      {fullMonth.days.map((day, index) => (
+        <Day key={index} offset={day.offset} current={day.today}>
           {day.day}
           {day.events.length > 0 && (
             <div>
@@ -20,11 +14,6 @@ const BigCalendar = ({ fullMonth }) => {
               ))}
             </div>
           )}
-        </Day>
-      ))}
-      {next.days.map((day, index) => (
-        <Day key={index} offset>
-          {day.day}
         </Day>
       ))}
     </Main>

@@ -4,6 +4,8 @@ import { FlexRow, FlexCol } from '../globals';
 export const Wrapper = styled(FlexCol)`
   padding: 20px;
   border-bottom: 1px solid #ddd;
+  cursor: default;
+  user-select: none;
 `;
 
 export const Toolbar = styled(FlexRow)`
@@ -24,7 +26,6 @@ export const GridItem = styled(FlexRow)`
   justify-content: center;
   font-size: 10px;
   font-weight: 600;
-  color: #333;
 `;
 
 export const Day = styled(FlexRow)`
@@ -36,6 +37,7 @@ export const Day = styled(FlexRow)`
   width: 22px;
   height: 22px;
   border-radius: 50%;
+  color: ${({ offset }) => (offset && '#777') || '#333'}
 
   &:hover {
     background: #eee;

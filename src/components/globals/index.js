@@ -63,6 +63,7 @@ export const Toolbar = styled(FlexRow)`
   padding: 0 10px;
   justify-content: space-between;
   border-bottom: 1px solid #ddd;
+  user-select: none;
 `;
 
 export const Sidebar = styled(FlexCol)`

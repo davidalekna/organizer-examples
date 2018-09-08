@@ -10,11 +10,22 @@ import BigCalendar from './components/big';
 import events from './events';
 
 class App extends React.Component {
+  state = { events };
+  addEvent = event => {
+    this.setState(state => ({
+      events: [...state.events, event],
+    }));
+  };
   render() {
     return (
       <ThemeProvider theme={theme.default}>
-        <DatesBrowser initialEvents={events}>
-          {({ subCalendarMonth, addCalendarMonth, getFullMonth }) => {
+        <DatesBrowser events={this.state.events}>
+          {({
+            subCalendarMonth,
+            addCalendarMonth,
+            getFullMonth,
+            selectDate,
+          }) => {
             const fullMonth = getFullMonth();
             return (
               <Root>
@@ -25,15 +36,30 @@ class App extends React.Component {
                       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                       <button onClick={subCalendarMonth}>prev</button>
                       <button onClick={addCalendarMonth}>next</button>
-                      <H1>{`${fullMonth.current.name} ${
-                        fullMonth.current.year
-                      }`}</H1>
+                      <H1>{`${fullMonth.name} ${fullMonth.year}`}</H1>
                     </FlexRow>
                   </FlexRow>
                   <div>Select View Type + Search for events</div>
                 </Toolbar>
                 <Sidebar>
-                  <SmallCalendar />
+                  <SmallCalendar selectDate={selectDate} />
+                  <div>
+                    <button
+                      onClick={() =>
+                        this.addEvent({
+                          id: 333,
+                          title: 'make that soup already!',
+                          location: 'location address',
+                          starts: new Date('2018', '08', '05'),
+                          color: '#b342f4',
+                          createdBy: 'Username',
+                          calendar: 'Reminders',
+                        })
+                      }
+                    >
+                      add event
+                    </button>
+                  </div>
                 </Sidebar>
                 <BigCalendar fullMonth={fullMonth} />
               </Root>
