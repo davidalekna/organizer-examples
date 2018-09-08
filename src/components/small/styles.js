@@ -16,7 +16,7 @@ export const Toolbar = styled(FlexRow)`
 
 export const Grid = styled.div`
   display: grid;
-  height: 216px;
+  height: 215px;
   grid-template-rows: repeat(7, 1fr);
   grid-template-columns: repeat(7, 1fr);
 `;
@@ -26,6 +26,7 @@ export const GridItem = styled(FlexRow)`
   justify-content: center;
   font-size: 10px;
   font-weight: 600;
+  color: ${({ offset }) => (offset && '#777') || '#333'};
 `;
 
 export const Day = styled(FlexRow)`
@@ -37,9 +38,10 @@ export const Day = styled(FlexRow)`
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  color: ${({ offset }) => (offset && '#777') || '#333'}
+  background: ${({ current }) => current && '#4286f4'};
+  color: ${({ current }) => current && 'white'};
 
   &:hover {
-    background: #eee;
+    background: ${({ current }) => !current && '#eee'};
   }
 `;

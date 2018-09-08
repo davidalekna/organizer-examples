@@ -1,20 +1,23 @@
 import React from 'react';
-import { Main, Day } from './styles';
+import { FlexCol } from '../globals';
+import { Main, DayBlock, Day, Event } from './styles';
 
 const BigCalendar = ({ fullMonth }) => {
   return (
     <Main>
       {fullMonth.days.map((day, index) => (
-        <Day key={index} offset={day.offset} current={day.today}>
-          {day.day}
+        <DayBlock key={index} offset={day.offset} current={day.today}>
+          <Day current={day.today}>{day.day}</Day>
           {day.events.length > 0 && (
-            <div>
+            <FlexCol>
               {day.events.map(event => (
-                <div key={event.id}>{event.title}</div>
+                <Event key={event.id} color={event.color}>
+                  {event.title}
+                </Event>
               ))}
-            </div>
+            </FlexCol>
           )}
-        </Day>
+        </DayBlock>
       ))}
     </Main>
   );

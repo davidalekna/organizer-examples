@@ -18,12 +18,13 @@ const SmallCalendar = ({ selectDate }) => (
           </Toolbar>
           <Grid>
             {days.map((day, index) => (
-              <GridItem key={index}>{day.slice(0, 1)}</GridItem>
+              <GridItem key={index} offset>
+                {day.slice(0, 1)}
+              </GridItem>
             ))}
             {fullMonth.days.map((day, index) => (
-              <GridItem key={index}>
+              <GridItem key={index} offset={day.offset}>
                 <Day
-                  offset={day.offset}
                   current={day.today}
                   onClick={() => selectDate({ date: day.date })}
                 >
