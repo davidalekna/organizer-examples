@@ -5,30 +5,27 @@ import { ThemeProvider } from 'styled-components';
 import { Root, Toolbar, Sidebar, Main, Day } from './components/globals';
 import DatesBrowser from 'react-dates-browser';
 import theme from './theme';
+import SmallCalendar from './components/small';
 
 class App extends React.Component {
   render() {
     return (
       <ThemeProvider theme={theme.default}>
-        <Root>
-          <Toolbar>
-            <div>
-              <div>Calendar</div>
-              <div>Switch Months or years</div>
-            </div>
-            <div>Select View Type + Search for events</div>
-          </Toolbar>
-          <Sidebar>
-            <div>Small Calendar</div>
-            <div>Different Calendars</div>
-          </Sidebar>
-          <DatesBrowser>
-            {({ getFullMonth }) => {
-              const { prev, current, next } = getFullMonth({
-                month: 9,
-                year: 2018,
-              });
-              return (
+        <DatesBrowser>
+          {({ getFullMonth }) => {
+            const { prev, current, next } = getFullMonth();
+            return (
+              <Root>
+                <Toolbar>
+                  <div>
+                    <div>Calendar</div>
+                    <div>Switch Months or years</div>
+                  </div>
+                  <div>Select View Type + Search for events</div>
+                </Toolbar>
+                <Sidebar>
+                  <SmallCalendar />
+                </Sidebar>
                 <Main>
                   {prev.days.map((day, index) => (
                     <Day key={index} offset>
@@ -53,10 +50,10 @@ class App extends React.Component {
                     </Day>
                   ))}
                 </Main>
-              );
-            }}
-          </DatesBrowser>
-        </Root>
+              </Root>
+            );
+          }}
+        </DatesBrowser>
       </ThemeProvider>
     );
   }
