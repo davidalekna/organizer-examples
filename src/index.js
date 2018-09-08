@@ -2,54 +2,40 @@ import './reset.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
-import { Root, Toolbar, Sidebar, Main, Day } from './components/globals';
+import { Root, Toolbar, Sidebar, FlexRow, H1 } from './components/globals';
 import DatesBrowser from 'react-dates-browser';
 import theme from './theme';
 import SmallCalendar from './components/small';
+import BigCalendar from './components/big';
+import events from './events';
 
 class App extends React.Component {
   render() {
     return (
       <ThemeProvider theme={theme.default}>
-        <DatesBrowser>
-          {({ getFullMonth }) => {
-            const { prev, current, next } = getFullMonth();
+        <DatesBrowser initialEvents={events}>
+          {({ subCalendarMonth, addCalendarMonth, getFullMonth }) => {
+            const fullMonth = getFullMonth();
             return (
               <Root>
                 <Toolbar>
-                  <div>
-                    <div>Calendar</div>
-                    <div>Switch Months or years</div>
-                  </div>
+                  <FlexRow>
+                    <H1>{`📅 Calendar`}</H1>
+                    <FlexRow>
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      <button onClick={subCalendarMonth}>prev</button>
+                      <button onClick={addCalendarMonth}>next</button>
+                      <H1>{`${fullMonth.current.name} ${
+                        fullMonth.current.year
+                      }`}</H1>
+                    </FlexRow>
+                  </FlexRow>
                   <div>Select View Type + Search for events</div>
                 </Toolbar>
                 <Sidebar>
                   <SmallCalendar />
                 </Sidebar>
-                <Main>
-                  {prev.days.map((day, index) => (
-                    <Day key={index} offset>
-                      {day.day}
-                    </Day>
-                  ))}
-                  {current.days.map((day, index) => (
-                    <Day key={index} current={day.today}>
-                      {day.day}
-                      {day.events.length > 0 && (
-                        <div>
-                          {day.events.map(event => (
-                            <div key={event.id}>{event.title}</div>
-                          ))}
-                        </div>
-                      )}
-                    </Day>
-                  ))}
-                  {next.days.map((day, index) => (
-                    <Day key={index} offset>
-                      {day.day}
-                    </Day>
-                  ))}
-                </Main>
+                <BigCalendar fullMonth={fullMonth} />
               </Root>
             );
           }}

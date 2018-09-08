@@ -14,7 +14,7 @@ export const Toolbar = styled(FlexRow)`
 
 export const Grid = styled.div`
   display: grid;
-  height: 215px;
+  height: 216px;
   grid-template-rows: repeat(7, 1fr);
   grid-template-columns: repeat(7, 1fr);
 `;
