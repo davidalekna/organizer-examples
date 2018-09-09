@@ -2,7 +2,8 @@ import React from 'react';
 import { FlexCol } from '../globals';
 import { Main, DayBlock, Day, Event } from './styles';
 
-const BigCalendar = ({ fullMonth }) => {
+const BigCalendar = ({ getFullMonth }) => {
+  const fullMonth = getFullMonth();
   return (
     <Main>
       {fullMonth.days.map((day, index) => (

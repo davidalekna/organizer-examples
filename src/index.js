@@ -10,12 +10,6 @@ import BigCalendar from './components/big';
 import YearView from './components/year';
 import events from './events';
 
-// const loadMonths = getFullMonth => {
-//   return Array(13)
-//     .fill({})
-//     .map((u, month) => getFullMonth(month));
-// };
-
 class App extends React.Component {
   state = { events, view: 'year' };
   addEvent = event => {
@@ -58,12 +52,12 @@ class App extends React.Component {
         );
     }
   };
-  renderView = ({ getFullMonth, days }) => {
+  renderView = ({ getFullMonth, getFullYear, days }) => {
     switch (this.state.view) {
       case 'year':
-        return <YearView fullMonth={getFullMonth} days={days} />;
+        return <YearView />;
       default:
-        return <BigCalendar fullMonth={getFullMonth()} />;
+        return <BigCalendar getFullMonth={getFullMonth} />;
     }
   };
   render() {
@@ -74,6 +68,7 @@ class App extends React.Component {
             subCalendarMonth,
             addCalendarMonth,
             getFullMonth,
+            getFullYear,
             selectDate,
             reset,
             days,
@@ -116,7 +111,7 @@ class App extends React.Component {
                     </button>
                   </div>
                 </Sidebar>
-                {this.renderView({ getFullMonth, days })}
+                {this.renderView({ getFullMonth, getFullYear, days })}
               </Root>
             );
           }}
