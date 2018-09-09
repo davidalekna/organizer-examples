@@ -22,13 +22,13 @@ class App extends React.Component {
   };
   renderToolbar = ({
     reset,
+    date,
     subCalendarMonth,
     addCalendarMonth,
-    getFullMonth,
     subCalendarYear,
     addCalendarYear,
   }) => {
-    const fullMonth = getFullMonth();
+    console.log(date);
     switch (this.state.view) {
       case 'year':
         return (
@@ -37,7 +37,7 @@ class App extends React.Component {
             <button onClick={reset}>today</button>
             <button onClick={subCalendarYear}>prev</button>
             <button onClick={addCalendarYear}>next</button>
-            <H1>{fullMonth.year}</H1>
+            <H1>{date.getFullYear()}</H1>
           </FlexRow>
         );
       default:
@@ -47,33 +47,39 @@ class App extends React.Component {
             <button onClick={reset}>today</button>
             <button onClick={subCalendarMonth}>prev</button>
             <button onClick={addCalendarMonth}>next</button>
-            <H1>{`${fullMonth.name} ${fullMonth.year}`}</H1>
+            {/* ${date.getFullYear.name} */}
+            <H1>{`${date.getFullYear()}`}</H1>
           </FlexRow>
         );
     }
   };
-  renderView = ({ getFullMonth, getFullYear, days }) => {
+  renderView = ({ getFullMonth, days }) => {
     switch (this.state.view) {
       case 'year':
         return <YearView />;
       default:
-        return <BigCalendar getFullMonth={getFullMonth} />;
+        return <BigCalendar getFullMonth={getFullMonth} days={days} />;
     }
+  };
+  changeView = view => {
+    this.setState({
+      view,
+    });
   };
   render() {
     return (
       <ThemeProvider theme={theme.default}>
         <DatesBrowser events={this.state.events} onReset={this.handleReset}>
           {({
-            subCalendarMonth,
             addCalendarMonth,
-            getFullMonth,
-            getFullYear,
-            selectDate,
-            reset,
-            days,
+            subCalendarMonth,
             addCalendarYear,
             subCalendarYear,
+            getFullMonth,
+            selectDate,
+            reset,
+            date,
+            days,
           }) => {
             return (
               <Root>
@@ -87,9 +93,17 @@ class App extends React.Component {
                       getFullMonth,
                       addCalendarYear,
                       subCalendarYear,
+                      date,
                     })}
                   </FlexRow>
-                  <div>Select View Type + Search for events</div>
+                  <div>
+                    <button onClick={() => this.changeView('month')}>
+                      month
+                    </button>
+                    <button onClick={() => this.changeView('year')}>
+                      year
+                    </button>
+                  </div>
                 </Toolbar>
                 <Sidebar>
                   <SmallCalendar selectDate={selectDate} />
@@ -111,7 +125,7 @@ class App extends React.Component {
                     </button>
                   </div>
                 </Sidebar>
-                {this.renderView({ getFullMonth, getFullYear, days })}
+                {this.renderView({ getFullMonth, days })}
               </Root>
             );
           }}

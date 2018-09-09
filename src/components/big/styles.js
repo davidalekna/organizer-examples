@@ -17,6 +17,12 @@ export const DayBlock = styled(FlexCol)`
     offset ? '#f9f9f9' : (current && '#42f492') || null};
 `;
 
+export const DayName = styled.div`
+  font-size: 13px;
+  margin: 5px 0 0 7px;
+  color: #333;
+`;
+
 export const Day = styled(FlexRow)`
   align-items: center;
   justify-content: center;

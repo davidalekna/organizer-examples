@@ -38,7 +38,8 @@ export const Day = styled(FlexRow)`
   height: 22px;
   border-radius: 50%;
   background: ${({ current }) => current && '#4286f4'};
-  color: ${({ current }) => current && 'white'};
+  color: ${({ current, weekend }) =>
+    (current && 'white') || (weekend && '#777')};
 
   &:hover {
     background: ${({ current }) => !current && '#eee'};
