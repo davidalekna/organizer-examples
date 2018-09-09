@@ -1,46 +1,50 @@
 import React from 'react';
-import DatesBrowser from 'react-dates-browser';
 import { Day, Toolbar, Wrapper, Grid, GridItem } from './styles';
 import { FlexRow } from '../globals';
 import { IconButton } from '../buttons';
 
-const SmallCalendar = ({ selectDate }) => (
-  <DatesBrowser>
-    {({ addCalendarMonth, subCalendarMonth, days, getFullMonth }) => {
-      const fullMonth = getFullMonth();
-      return (
-        <Wrapper>
-          <Toolbar>
-            {`${fullMonth.name} ${fullMonth.year}`}
-            <FlexRow style={{ alignItems: 'center', marginRight: 6 }}>
-              <IconButton onClick={subCalendarMonth}>
-                navigate_before
-              </IconButton>
-              &nbsp;
-              <IconButton onClick={addCalendarMonth}>navigate_next</IconButton>
-            </FlexRow>
-          </Toolbar>
-          <Grid>
-            {days.map((day, index) => (
-              <GridItem key={index} offset>
-                {day.slice(0, 1)}
-              </GridItem>
-            ))}
-            {fullMonth.days.map((day, index) => (
-              <GridItem key={index} offset={day.offset}>
-                <Day
-                  current={day.today}
-                  onClick={() => selectDate({ date: day.date })}
-                >
-                  {day.day}
-                </Day>
-              </GridItem>
-            ))}
-          </Grid>
-        </Wrapper>
-      );
-    }}
-  </DatesBrowser>
-);
+const SmallCalendar = ({
+  month,
+  days,
+  showNav,
+  onPrevClick,
+  onNextClick,
+  onDayClick,
+  weekends,
+  style,
+}) => {
+  return (
+    <Wrapper>
+      <Toolbar big={showNav} style={{ fontSize: showNav ? '12px' : '15px' }}>
+        {month.name} {showNav && month.year}
+        {showNav && (
+          <FlexRow style={{ alignItems: 'center', marginRight: 6 }}>
+            <IconButton onClick={onPrevClick}>navigate_before</IconButton>
+            &nbsp;
+            <IconButton onClick={onNextClick}>navigate_next</IconButton>
+          </FlexRow>
+        )}
+      </Toolbar>
+      <Grid style={style}>
+        {days.map((day, index) => (
+          <GridItem key={index} offset>
+            {day.slice(0, 1)}
+          </GridItem>
+        ))}
+        {month.days.map((day, index) => (
+          <GridItem key={index} offset={day.offset}>
+            <Day
+              current={day.today}
+              weekend={weekends && day.weekend}
+              onClick={() => onDayClick({ date: day.date })}
+            >
+              {day.day}
+            </Day>
+          </GridItem>
+        ))}
+      </Grid>
+    </Wrapper>
+  );
+};
 
 export default SmallCalendar;

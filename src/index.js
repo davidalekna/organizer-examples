@@ -6,7 +6,7 @@ import { Root, Toolbar, Sidebar, FlexRow, H1 } from './components/globals';
 import { IconButton } from './components/buttons';
 import DatesBrowser from 'react-dates-browser';
 import theme from './theme';
-import SmallCalendar from './components/small';
+import SideCalendar from './components/sideCalendar';
 import BigCalendar from './components/big';
 import YearView from './components/year';
 import events from './events';
@@ -115,7 +115,7 @@ class App extends React.Component {
                   </div>
                 </Toolbar>
                 <Sidebar>
-                  <SmallCalendar selectDate={selectDate} />
+                  <SideCalendar selectDate={selectDate} />
                   <div>
                     <button
                       onClick={() =>

@@ -9,13 +9,12 @@ export const Wrapper = styled(FlexCol)`
 
 export const Toolbar = styled(FlexRow)`
   justify-content: space-between;
-  font-size: 12px;
-  padding: 0 0 10px 10px;
+  padding: 0 0 ${({ big }) => (big ? '10px' : '5px')} 10px;
 `;
 
 export const Grid = styled.div`
   display: grid;
-  height: 215px;
+  height: 100%;
   grid-template-rows: repeat(7, 1fr);
   grid-template-columns: repeat(7, 1fr);
 `;
