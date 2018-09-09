@@ -29,7 +29,6 @@ class App extends React.Component {
     subCalendarYear,
     addCalendarYear,
   }) => {
-    console.log(date);
     switch (this.state.view) {
       case 'year':
         return (

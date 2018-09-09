@@ -5,7 +5,9 @@ import SmallCalendar from '../small';
 
 class YearView extends React.Component {
   render() {
+    console.time('getFullYear');
     const months = this.props.datesBrowser.getFullYear();
+    console.timeEnd('getFullYear');
     return (
       <YearGrid>
         {months.map((month, key) => (

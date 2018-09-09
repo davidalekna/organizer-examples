@@ -7,7 +7,7 @@ const SideCalendar = ({ selectDate }) => (
     {({ addCalendarMonth, subCalendarMonth, days, getFullMonth }) => (
       <div style={{ borderBottom: '1px solid #ddd' }}>
         <SmallCalendar
-          style={{ height: 215 }}
+          style={{ height: 220 }}
           {...{
             month: getFullMonth(),
             showNav: true,
