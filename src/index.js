@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 import { Root, Toolbar, Sidebar, FlexRow, H1 } from './components/globals';
+import { IconButton } from './components/buttons';
 import DatesBrowser from 'react-dates-browser';
 import theme from './theme';
 import SmallCalendar from './components/small';
@@ -35,8 +36,12 @@ class App extends React.Component {
           <FlexRow>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <button onClick={reset}>today</button>
-            <button onClick={subCalendarYear}>prev</button>
-            <button onClick={addCalendarYear}>next</button>
+            <IconButton size="24px" onClick={subCalendarYear}>
+              navigate_before
+            </IconButton>
+            <IconButton size="24px" onClick={addCalendarYear}>
+              navigate_next
+            </IconButton>
             <H1>{date.getFullYear()}</H1>
           </FlexRow>
         );
@@ -45,8 +50,12 @@ class App extends React.Component {
           <FlexRow>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <button onClick={reset}>today</button>
-            <button onClick={subCalendarMonth}>prev</button>
-            <button onClick={addCalendarMonth}>next</button>
+            <IconButton size="24px" onClick={subCalendarMonth}>
+              navigate_before
+            </IconButton>
+            <IconButton size="24px" onClick={addCalendarMonth}>
+              navigate_next
+            </IconButton>
             {/* ${date.getFullYear.name} */}
             <H1>{`${date.getFullYear()}`}</H1>
           </FlexRow>

@@ -1,6 +1,8 @@
 import React from 'react';
 import DatesBrowser from 'react-dates-browser';
 import { Day, Toolbar, Wrapper, Grid, GridItem } from './styles';
+import { FlexRow } from '../globals';
+import { IconButton } from '../buttons';
 
 const SmallCalendar = ({ selectDate }) => (
   <DatesBrowser>
@@ -9,12 +11,14 @@ const SmallCalendar = ({ selectDate }) => (
       return (
         <Wrapper>
           <Toolbar>
-            <div>{`${fullMonth.name} ${fullMonth.year}`}</div>
-            <div>
-              <button onClick={subCalendarMonth}>prev</button>
+            {`${fullMonth.name} ${fullMonth.year}`}
+            <FlexRow style={{ alignItems: 'center', marginRight: 6 }}>
+              <IconButton onClick={subCalendarMonth}>
+                navigate_before
+              </IconButton>
               &nbsp;
-              <button onClick={addCalendarMonth}>next</button>
-            </div>
+              <IconButton onClick={addCalendarMonth}>navigate_next</IconButton>
+            </FlexRow>
           </Toolbar>
           <Grid>
             {days.map((day, index) => (
