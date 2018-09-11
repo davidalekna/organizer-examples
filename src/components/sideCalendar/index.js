@@ -1,9 +1,9 @@
 import React from 'react';
-import DatesBrowser from 'react-dates-browser';
+import Organizer from 'react-organizer';
 import SmallCalendar from '../small';
 
 const SideCalendar = ({ selectDate }) => (
-  <DatesBrowser>
+  <Organizer>
     {({ addCalendarMonth, subCalendarMonth, days, getFullMonth }) => (
       <div style={{ borderBottom: '1px solid #ddd' }}>
         <SmallCalendar
@@ -19,7 +19,7 @@ const SideCalendar = ({ selectDate }) => (
         />
       </div>
     )}
-  </DatesBrowser>
+  </Organizer>
 );
 
 export default SideCalendar;

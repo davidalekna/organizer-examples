@@ -1,12 +1,12 @@
 import React from 'react';
 import { YearGrid } from './styles';
-import { withDatesBrowser } from 'react-dates-browser';
+import { withOrganizer } from 'react-organizer';
 import SmallCalendar from '../small';
 
 class YearView extends React.Component {
   render() {
     console.time('getFullYear');
-    const months = this.props.datesBrowser.getFullYear();
+    const months = this.props.organizer.getFullYear();
     console.timeEnd('getFullYear');
     return (
       <YearGrid>
@@ -20,7 +20,7 @@ class YearView extends React.Component {
                 console.log(date);
                 alert('clicked on date');
               },
-              days: this.props.datesBrowser.days,
+              days: this.props.organizer.days,
               weekends: true,
             }}
           />
@@ -30,4 +30,4 @@ class YearView extends React.Component {
   }
 }
 
-export default withDatesBrowser(YearView);
+export default withOrganizer(YearView);

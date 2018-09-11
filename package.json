@@ -1,7 +1,7 @@
 {
   "name": "1j289dna",
   "version": "1.0.0",
-  "description": "react-data-browser in use",
+  "description": "react-organizer in use",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {

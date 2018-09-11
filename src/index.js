@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 import { Root, Toolbar, Sidebar, FlexRow, H1 } from './components/globals';
 import { IconButton } from './components/buttons';
-import DatesBrowser from 'react-dates-browser';
+import Organizer from 'react-organizer';
 import theme from './theme';
 import SideCalendar from './components/sideCalendar';
 import BigCalendar from './components/big';
@@ -77,7 +77,7 @@ class App extends React.Component {
   render() {
     return (
       <ThemeProvider theme={theme.default}>
-        <DatesBrowser events={this.state.events} onReset={this.handleReset}>
+        <Organizer events={this.state.events} onReset={this.handleReset}>
           {({
             addCalendarMonth,
             subCalendarMonth,
@@ -137,7 +137,7 @@ class App extends React.Component {
               </Root>
             );
           }}
-        </DatesBrowser>
+        </Organizer>
       </ThemeProvider>
     );
   }
