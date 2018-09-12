@@ -47,34 +47,11 @@ const Nav = ({
   }
 };
 
-const Toolbar = ({
-  view,
-  reset,
-  subCalendarMonth,
-  addCalendarMonth,
-  getFullMonth,
-  addCalendarYear,
-  subCalendarYear,
-  date,
-  months,
-  changeView,
-}) => (
+const Toolbar = ({ changeView, ...props }) => (
   <ToolbarWrapper>
     <FlexRow>
       <H1>{`📅 Calendar`}</H1>
-      <Nav
-        {...{
-          view,
-          reset,
-          subCalendarMonth,
-          addCalendarMonth,
-          getFullMonth,
-          addCalendarYear,
-          subCalendarYear,
-          date,
-          months,
-        }}
-      />
+      <Nav {...props} />
     </FlexRow>
     <div>
       <Button onClick={() => changeView('month')}>month</Button>
