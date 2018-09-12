@@ -27,16 +27,18 @@ const SmallCalendar = ({
       </Toolbar>
       <Grid style={style}>
         {days.map((day, index) => (
-          <GridItem key={index} offset>
+          <GridItem key={index} darker>
             {day.slice(0, 1)}
           </GridItem>
         ))}
         {month.days.map((day, index) => (
-          <GridItem key={index} offset={day.offset}>
+          <GridItem key={index} darker={day.offset}>
             <Day
               current={day.today}
               weekend={weekends && day.weekend}
-              onClick={() => onDayClick({ date: day.date })}
+              hoverable={!day.offset}
+              selected={day.selected}
+              onClick={() => !day.offset && onDayClick(day.date)}
             >
               {day.day}
             </Day>

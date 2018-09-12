@@ -12,7 +12,6 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "react-organizer": "^0.0.1",
     "react-scripts": "^1.1.4",
     "styled-components": "3.4.5"
   },

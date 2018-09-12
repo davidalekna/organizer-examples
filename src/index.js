@@ -7,19 +7,23 @@ import { IconButton } from './components/buttons';
 import Organizer from 'react-organizer';
 import theme from './theme';
 import SideCalendar from './components/sideCalendar';
-import BigCalendar from './components/big';
+import MonthCalendar from './components/month';
 import YearView from './components/year';
-import events from './events';
+import { languages, events } from './helpers';
 
 class App extends React.Component {
-  state = { events, view: 'year' };
+  state = {
+    events,
+    view: 'year',
+    lang: 'en',
+    languages: Object.keys(languages),
+  };
+  changeView = view => this.setState({ view });
+  switchLanguage = lang => this.setState({ lang });
   addEvent = event => {
     this.setState(state => ({
       events: [...state.events, event],
     }));
-  };
-  handleReset = () => {
-    console.log('reset');
   };
   renderToolbar = ({
     reset,
@@ -66,18 +70,13 @@ class App extends React.Component {
       case 'year':
         return <YearView />;
       default:
-        return <BigCalendar getFullMonth={getFullMonth} days={days} />;
+        return <MonthCalendar getFullMonth={getFullMonth} days={days} />;
     }
-  };
-  changeView = view => {
-    this.setState({
-      view,
-    });
   };
   render() {
     return (
       <ThemeProvider theme={theme.default}>
-        <Organizer events={this.state.events} onReset={this.handleReset}>
+        <Organizer events={this.state.events}>
           {({
             addCalendarMonth,
             subCalendarMonth,
@@ -88,6 +87,7 @@ class App extends React.Component {
             reset,
             date,
             days,
+            selected,
           }) => {
             return (
               <Root>
@@ -114,7 +114,12 @@ class App extends React.Component {
                   </div>
                 </Toolbar>
                 <Sidebar>
-                  <SideCalendar selectDate={selectDate} />
+                  <SideCalendar
+                    {...{
+                      selectDate,
+                      selected,
+                    }}
+                  />
                   <div>
                     <button
                       onClick={() =>

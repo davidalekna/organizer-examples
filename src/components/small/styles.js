@@ -24,7 +24,7 @@ export const GridItem = styled(FlexRow)`
   justify-content: center;
   font-size: 10px;
   font-weight: 600;
-  color: ${({ offset }) => (offset && '#777') || '#333'};
+  color: ${({ darker }) => (darker && '#777') || '#333'};
 `;
 
 export const Day = styled(FlexRow)`
@@ -32,15 +32,16 @@ export const Day = styled(FlexRow)`
   justify-content: center;
   border: none;
   outline: none;
-  cursor: pointer;
+  cursor: ${({ hoverable }) => hoverable && 'pointer'};
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: ${({ current }) => current && '#4286f4'};
+  background: ${({ current, selected }) =>
+    (current && '#4286f4') || (selected && '#777')};
   color: ${({ current, weekend }) =>
     (current && 'white') || (weekend && '#777')};
-
+  color: ${({ selected }) => selected && 'white'};
   &:hover {
-    background: ${({ current }) => !current && '#eee'};
+    background: ${({ current, hoverable }) => hoverable && !current && '#eee'};
   }
 `;

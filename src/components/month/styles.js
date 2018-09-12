@@ -13,8 +13,8 @@ export const Main = styled.main`
 export const DayBlock = styled(FlexCol)`
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background: ${({ offset, current }) =>
-    offset ? '#f9f9f9' : (current && '#42f492') || null};
+  background: ${({ darker, current }) =>
+    darker ? '#f9f9f9' : (current && '#42f492') || null};
 `;
 
 export const DayName = styled.div`
