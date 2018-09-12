@@ -19,3 +19,14 @@ export const StyledIconButton = styled.button`
   cursor: pointer;
   background: transparent;
 `;
+
+export const StyledSolidButton = styled.button`
+  background-color: ${props =>
+    props.disabled ? props.theme.bg.inactive : props.theme.bg.wash};
+  color: ${props => props.theme.text};
+  padding: 6px 15px;
+  &:hover {
+    background-color: ${props =>
+      props.disabled ? props.theme.bg.inactive : props.theme.brand.alt};
+  }
+`;

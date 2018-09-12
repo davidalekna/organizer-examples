@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlexRow, H1 } from '../globals';
 import { ToolbarWrapper } from './styles';
-import { IconButton } from '../buttons';
+import { IconButton, Button } from '../buttons';
 
 const Nav = ({
   view,
@@ -18,7 +18,7 @@ const Nav = ({
       return (
         <FlexRow>
           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          <button onClick={reset}>today</button>
+          <Button onClick={reset}>today</Button>
           <IconButton size="24px" onClick={subCalendarYear}>
             navigate_before
           </IconButton>
@@ -77,8 +77,8 @@ const Toolbar = ({
       />
     </FlexRow>
     <div>
-      <button onClick={() => changeView('month')}>month</button>
-      <button onClick={() => changeView('year')}>year</button>
+      <Button onClick={() => changeView('month')}>month</Button>
+      <Button onClick={() => changeView('year')}>year</Button>
     </div>
   </ToolbarWrapper>
 );

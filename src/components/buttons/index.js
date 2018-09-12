@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, StyledIconButton } from './styles';
+import { Icon, StyledIconButton, StyledSolidButton } from './styles';
 
 export const IconButton = ({
   children,
@@ -14,6 +14,12 @@ export const IconButton = ({
       {children}
     </Icon>
   </StyledIconButton>
+);
+
+export const Button = props => (
+  <StyledSolidButton disabled={props.loading} {...props}>
+    {props.children}
+  </StyledSolidButton>
 );
 
 export { Icon };
