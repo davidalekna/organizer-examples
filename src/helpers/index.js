@@ -1,6 +1,14 @@
 export const languages = {
   ru: {
-    weeks: [],
+    days: [
+      'понедельник',
+      'вторник',
+      'среда',
+      'четверг',
+      'пятница',
+      'суббота',
+      'воскресенье',
+    ],
     months: [
       'январь',
       'февраль',
@@ -17,7 +25,15 @@ export const languages = {
     ],
   },
   fr: {
-    weeks: [],
+    days: [
+      'Lundi',
+      'Mardi',
+      'Mercredi',
+      'Jeudi',
+      'Vendredi',
+      'Samedi',
+      'Dimanche',
+    ],
     months: [
       'janvier',
       'février',

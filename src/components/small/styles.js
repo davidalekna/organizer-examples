@@ -10,6 +10,7 @@ export const Wrapper = styled(FlexCol)`
 export const Toolbar = styled(FlexRow)`
   justify-content: space-between;
   padding: 0 0 ${({ big }) => (big ? '10px' : '5px')} 10px;
+  text-transform: capitalize;
 `;
 
 export const Grid = styled.div`

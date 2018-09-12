@@ -2,14 +2,14 @@ import './reset.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
-import { Root, Toolbar, Sidebar, FlexRow, H1 } from './components/globals';
-import { IconButton } from './components/buttons';
+import { Root, Sidebar } from './components/globals';
 import Organizer from 'react-organizer';
 import theme from './theme';
 import SideCalendar from './components/sideCalendar';
 import MonthCalendar from './components/month';
 import YearView from './components/year';
 import { languages, events } from './helpers';
+import Toolbar from './components/toolbar';
 
 class App extends React.Component {
   state = {
@@ -25,46 +25,6 @@ class App extends React.Component {
       events: [...state.events, event],
     }));
   };
-  renderToolbar = ({
-    reset,
-    date,
-    subCalendarMonth,
-    addCalendarMonth,
-    subCalendarYear,
-    addCalendarYear,
-  }) => {
-    switch (this.state.view) {
-      case 'year':
-        return (
-          <FlexRow>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <button onClick={reset}>today</button>
-            <IconButton size="24px" onClick={subCalendarYear}>
-              navigate_before
-            </IconButton>
-            <IconButton size="24px" onClick={addCalendarYear}>
-              navigate_next
-            </IconButton>
-            <H1>{date.getFullYear()}</H1>
-          </FlexRow>
-        );
-      default:
-        return (
-          <FlexRow>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            <button onClick={reset}>today</button>
-            <IconButton size="24px" onClick={subCalendarMonth}>
-              navigate_before
-            </IconButton>
-            <IconButton size="24px" onClick={addCalendarMonth}>
-              navigate_next
-            </IconButton>
-            {/* ${date.getFullYear.name} */}
-            <H1>{`${date.getFullYear()}`}</H1>
-          </FlexRow>
-        );
-    }
-  };
   renderView = ({ getFullMonth, days }) => {
     switch (this.state.view) {
       case 'year':
@@ -73,10 +33,17 @@ class App extends React.Component {
         return <MonthCalendar getFullMonth={getFullMonth} days={days} />;
     }
   };
+  detectLanguage = select => {
+    return languages[this.state.lang] && languages[this.state.lang][select];
+  };
   render() {
     return (
       <ThemeProvider theme={theme.default}>
-        <Organizer events={this.state.events}>
+        <Organizer
+          events={this.state.events}
+          initialMonths={this.detectLanguage('months')}
+          initialDays={this.detectLanguage('days')}
+        >
           {({
             addCalendarMonth,
             subCalendarMonth,
@@ -88,36 +55,31 @@ class App extends React.Component {
             date,
             days,
             selected,
+            months,
           }) => {
             return (
               <Root>
-                <Toolbar>
-                  <FlexRow>
-                    <H1>{`📅 Calendar`}</H1>
-                    {this.renderToolbar({
-                      reset,
-                      subCalendarMonth,
-                      addCalendarMonth,
-                      getFullMonth,
-                      addCalendarYear,
-                      subCalendarYear,
-                      date,
-                    })}
-                  </FlexRow>
-                  <div>
-                    <button onClick={() => this.changeView('month')}>
-                      month
-                    </button>
-                    <button onClick={() => this.changeView('year')}>
-                      year
-                    </button>
-                  </div>
-                </Toolbar>
+                <Toolbar
+                  {...{
+                    view: this.state.view,
+                    reset,
+                    subCalendarMonth,
+                    addCalendarMonth,
+                    getFullMonth,
+                    addCalendarYear,
+                    subCalendarYear,
+                    date,
+                    months,
+                    changeView: this.changeView,
+                  }}
+                />
                 <Sidebar>
                   <SideCalendar
                     {...{
                       selectDate,
                       selected,
+                      days,
+                      months,
                     }}
                   />
                   <div>

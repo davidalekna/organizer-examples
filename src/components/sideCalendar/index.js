@@ -4,19 +4,24 @@ import SmallCalendar from '../small';
 import { addMonths, subMonths } from 'date-fns';
 
 class SideCalendar extends React.Component {
-  state = { initDate: this.props.selected || new Date() };
+  state = { outerDate: this.props.selected || new Date() };
   addMonth = () =>
-    this.setState(state => ({ initDate: addMonths(state.initDate, 1) }));
+    this.setState(state => ({ outerDate: addMonths(state.outerDate, 1) }));
   subMonth = () =>
-    this.setState(state => ({ initDate: subMonths(state.initDate, 1) }));
+    this.setState(state => ({ outerDate: subMonths(state.outerDate, 1) }));
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.selected !== this.props.selected) {
-      this.setState({ initDate: this.props.selected || new Date() });
+      this.setState({ outerDate: this.props.selected || new Date() });
     }
   }
   render() {
     return (
-      <Organizer date={this.state.initDate} selected={this.props.selected}>
+      <Organizer
+        date={this.state.outerDate}
+        selected={this.props.selected}
+        initialDays={this.props.days}
+        initialMonths={this.props.months}
+      >
         {({ days, getFullMonth }) => (
           <div style={{ borderBottom: '1px solid #ddd' }}>
             <SmallCalendar
@@ -25,8 +30,8 @@ class SideCalendar extends React.Component {
                 month: getFullMonth(),
                 days,
                 showNav: true,
-                onPrevClick: () => this.addMonth(),
-                onNextClick: () => this.subMonth(),
+                onPrevClick: () => this.subMonth(),
+                onNextClick: () => this.addMonth(),
                 onDayClick: date => this.props.selectDate({ date }),
               }}
             />

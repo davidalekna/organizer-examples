@@ -57,15 +57,6 @@ export const Root = styled.div`
     'sidebar calendar calendar';
 `;
 
-export const Toolbar = styled(FlexRow)`
-  grid-area: toolbar;
-  align-items: center;
-  padding: 0 10px;
-  justify-content: space-between;
-  border-bottom: 1px solid #ddd;
-  user-select: none;
-`;
-
 export const Sidebar = styled(FlexCol)`
   grid-area: sidebar;
   border-right: 1px solid #ddd;
