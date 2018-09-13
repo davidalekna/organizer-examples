@@ -5707,9 +5707,9 @@ react-is@^16.3.1, react-is@^16.3.2:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.2.tgz#84891b56c2b6d9efdee577cc83501dfc5ecead88"
 
-react-organizer@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/react-organizer/-/react-organizer-0.0.6.tgz#fe9fe7a55f4c4fde321facb5f8b6a63a08b3751b"
+react-organizer@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/react-organizer/-/react-organizer-0.0.7.tgz#ad8b746f6e3c48a1962db236a7231493e8773381"
   dependencies:
     date-fns "^2.0.0-alpha.16"
     hoist-non-react-statics "^3.0.1"

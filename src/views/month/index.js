@@ -15,8 +15,8 @@ const MonthCalendar = ({ getFullMonth, days }) => (
         <Day current={day.today}>{day.day}</Day>
         {day.events.length > 0 && (
           <FlexCol>
-            {day.events.map(event => (
-              <Event key={event.id} color={event.color}>
+            {day.events.map((event, index) => (
+              <Event key={index} color={event.color}>
                 {event.title}
               </Event>
             ))}
