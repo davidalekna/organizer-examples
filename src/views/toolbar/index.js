@@ -32,7 +32,7 @@ const Nav = ({
       return (
         <FlexRow>
           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          <button onClick={reset}>today</button>
+          <Button onClick={reset}>today</Button>
           <IconButton size="24px" onClick={subCalendarMonth}>
             navigate_before
           </IconButton>
