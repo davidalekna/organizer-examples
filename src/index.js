@@ -2,14 +2,14 @@ import './reset.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
-import { Root, Sidebar } from './components/globals';
+import { Root } from './components/globals';
 import Organizer from 'react-organizer';
 import theme from './theme';
 import { languages, events } from './helpers';
 import Toolbar from './views/toolbar';
-import SideCalendar from './views/sideCalendar';
 import MonthCalendar from './views/month';
 import YearView from './views/year';
+import Sidebar from './views/sidebar';
 
 class App extends React.Component {
   state = {
@@ -75,33 +75,15 @@ class App extends React.Component {
                     changeView: this.changeView,
                   }}
                 />
-                <Sidebar>
-                  <SideCalendar
-                    {...{
-                      selectDate,
-                      selected,
-                      days,
-                      months,
-                    }}
-                  />
-                  <div>
-                    <button
-                      onClick={() =>
-                        this.addEvent({
-                          id: 333,
-                          title: 'make that soup already!',
-                          location: 'location address',
-                          starts: new Date('2018', '08', '05'),
-                          color: '#b342f4',
-                          createdBy: 'Username',
-                          calendar: 'Reminders',
-                        })
-                      }
-                    >
-                      add event
-                    </button>
-                  </div>
-                </Sidebar>
+                <Sidebar
+                  {...{
+                    addEvent: this.addEvent,
+                    selectDate,
+                    selected,
+                    days,
+                    months,
+                  }}
+                />
                 {this.renderView({ getFullMonth, days })}
               </Root>
             );

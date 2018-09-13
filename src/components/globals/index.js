@@ -49,15 +49,20 @@ export const Root = styled.div`
   display: grid;
   width: 100vw;
   height: 100vh;
+
   grid-template-rows: 65px 1fr 1fr;
-  grid-template-columns: 255px 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
     'toolbar toolbar toolbar'
-    'sidebar calendar calendar'
-    'sidebar calendar calendar';
-`;
+    'calendar calendar calendar'
+    'calendar calendar calendar';
 
-export const Sidebar = styled(FlexCol)`
-  grid-area: sidebar;
-  border-right: 1px solid #ddd;
+  @media (min-width: 1040px) {
+    grid-template-rows: 65px 1fr 1fr;
+    grid-template-columns: 255px 1fr 1fr;
+    grid-template-areas:
+      'toolbar toolbar toolbar'
+      'sidebar calendar calendar'
+      'sidebar calendar calendar';
+  }
 `;
