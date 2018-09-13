@@ -11,11 +11,13 @@ export const Main = styled.main`
 `;
 
 export const DayBlock = styled(FlexCol)`
+  flex: 0 0 auto;
+  overflow: hidden;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   background: ${({ darker, current, selected }) => {
     if (selected && !current) return '#eee';
-    return darker ? '#f9f9f9' : (current && '#ffddc6') || null;
+    return (darker && '#f9f9f9') || null;
   }};
 `;
 

@@ -8,10 +8,8 @@ const Sidebar = ({ addEvent, ...props }) => (
     <SideCalendar {...props} />
     <div>
       <ul>
-        <li>Calendar 1</li>
+        <li>Publick Holidays</li>
         <li>Calendar 2</li>
-        <li>Calendar 3</li>
-        <li>Calendar 4</li>
       </ul>
       <button
         onClick={() =>

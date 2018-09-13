@@ -53,12 +53,51 @@ export const languages = {
 
 export const events = [
   {
-    id: 123,
-    title: 'do some kitesurfing today!',
-    location: 'location address',
-    starts: new Date(),
+    title: 'New Year’s Day',
+    starts: new Date('2018', '0', '01'),
     color: '#b342f4',
-    createdBy: 'Username',
-    calendar: 'Reminders',
+    calendar: 'Publick Holidays',
+  },
+  {
+    title: 'Friday	Good Friday',
+    starts: new Date('2018', '02', '30'),
+    color: '#b342f4',
+    calendar: 'Publick Holidays',
+  },
+  {
+    title: 'Easter Monday',
+    starts: new Date('2018', '03', '02'),
+    color: '#b342f4',
+    calendar: 'Publick Holidays',
+  },
+  {
+    title: 'Early May bank holiday',
+    starts: new Date('2018', '04', '07'),
+    color: '#b342f4',
+    calendar: 'Publick Holidays',
+  },
+  {
+    title: 'Spring bank holiday',
+    starts: new Date('2018', '04', '28'),
+    color: '#b342f4',
+    calendar: 'Publick Holidays',
+  },
+  {
+    title: 'Summer bank holiday',
+    starts: new Date('2018', '07', '27'),
+    color: '#b342f4',
+    calendar: 'Publick Holidays',
+  },
+  {
+    title: 'Christmas Day',
+    starts: new Date('2018', '11', '25'),
+    color: '#b342f4',
+    calendar: 'Publick Holidays',
+  },
+  {
+    title: 'Boxing Day',
+    starts: new Date('2018', '11', '26'),
+    color: '#b342f4',
+    calendar: 'Publick Holidays',
   },
 ];
