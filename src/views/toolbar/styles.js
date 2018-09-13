@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FlexRow } from '../globals';
+import { FlexRow } from '../../components/globals';
 
 export const ToolbarWrapper = styled(FlexRow)`
   grid-area: toolbar;

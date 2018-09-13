@@ -5,21 +5,23 @@ import { ThemeProvider } from 'styled-components';
 import { Root, Sidebar } from './components/globals';
 import Organizer from 'react-organizer';
 import theme from './theme';
-import SideCalendar from './components/sideCalendar';
-import MonthCalendar from './components/month';
-import YearView from './components/year';
 import { languages, events } from './helpers';
-import Toolbar from './components/toolbar';
+import Toolbar from './views/toolbar';
+import SideCalendar from './views/sideCalendar';
+import MonthCalendar from './views/month';
+import YearView from './views/year';
 
 class App extends React.Component {
   state = {
     events,
-    view: 'year',
+    view: 'month',
     lang: 'en',
     languages: Object.keys(languages),
   };
   changeView = view => this.setState({ view });
-  switchLanguage = lang => this.setState({ lang });
+  switchLanguage = n => {
+    this.setState(state => ({ lang: [...state.lang, ...state.languages][n] }));
+  };
   addEvent = event => {
     this.setState(state => ({
       events: [...state.events, event],

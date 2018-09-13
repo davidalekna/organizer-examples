@@ -1,12 +1,12 @@
 import React from 'react';
 import { YearGrid } from './styles';
 import { withOrganizer } from 'react-organizer';
-import SmallCalendar from '../small';
+import CalendarBase from '../../components/calendarBase';
 
 const YearView = ({ organizer: { getFullYear, selectDate, days } }) => (
   <YearGrid>
     {getFullYear().map((month, key) => (
-      <SmallCalendar
+      <CalendarBase
         key={key}
         {...{
           month,

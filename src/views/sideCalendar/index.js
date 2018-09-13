@@ -1,6 +1,6 @@
 import React from 'react';
 import Organizer from 'react-organizer';
-import SmallCalendar from '../small';
+import CalendarBase from '../../components/calendarBase';
 import { addMonths, subMonths } from 'date-fns';
 
 class SideCalendar extends React.Component {
@@ -24,7 +24,7 @@ class SideCalendar extends React.Component {
       >
         {({ days, getFullMonth }) => (
           <div style={{ borderBottom: '1px solid #ddd' }}>
-            <SmallCalendar
+            <CalendarBase
               style={{ height: 220 }}
               {...{
                 month: getFullMonth(),

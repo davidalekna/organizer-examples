@@ -3,7 +3,7 @@ import { Day, Toolbar, Wrapper, Grid, GridItem } from './styles';
 import { FlexRow } from '../globals';
 import { IconButton } from '../buttons';
 
-const SmallCalendar = ({
+const Base = ({
   month,
   days,
   showNav,
@@ -49,4 +49,4 @@ const SmallCalendar = ({
   );
 };
 
-export default SmallCalendar;
+export default Base;

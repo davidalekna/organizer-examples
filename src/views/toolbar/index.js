@@ -1,7 +1,7 @@
 import React from 'react';
-import { FlexRow, H1 } from '../globals';
+import { FlexRow, H1 } from '../../components/globals';
+import { IconButton, Button } from '../../components/buttons';
 import { ToolbarWrapper } from './styles';
-import { IconButton, Button } from '../buttons';
 
 const Nav = ({
   view,

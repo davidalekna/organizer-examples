@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FlexCol, FlexRow } from '../globals';
+import { FlexCol, FlexRow } from '../../components/globals';
 
 export const Main = styled.main`
   grid-area: calendar;
@@ -13,8 +13,10 @@ export const Main = styled.main`
 export const DayBlock = styled(FlexCol)`
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background: ${({ darker, current }) =>
-    darker ? '#f9f9f9' : (current && '#42f492') || null};
+  background: ${({ darker, current, selected }) => {
+    if (selected && !current) return '#eee';
+    return darker ? '#f9f9f9' : (current && '#ffddc6') || null;
+  }};
 `;
 
 export const DayName = styled.div`
@@ -33,7 +35,7 @@ export const Day = styled(FlexRow)`
   border-radius: 50%;
   margin: 3px;
   background: ${({ current }) => current && '#4286f4'};
-  color: ${({ current }) => current && 'white'};
+  color: ${({ current, selected }) => selected || (current && 'white')};
 `;
 
 export const Event = styled.div`
