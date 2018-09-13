@@ -14,7 +14,7 @@
     "react-dom": "^16.5.0",
     "react-organizer": "^0.0.2",
     "react-scripts": "^1.1.4",
-    "styled-components": "3.4.5"
+    "styled-components": "^3.4.6"
   },
   "devDependencies": {},
   "scripts": {
