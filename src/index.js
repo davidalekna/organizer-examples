@@ -1,6 +1,6 @@
-import './reset.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import GlobalStyle from './reset.css';
 import { ThemeProvider } from 'styled-components';
 import { Root } from './components/globals';
 import Organizer from 'react-organizer';
@@ -41,54 +41,57 @@ class App extends React.Component {
   render() {
     return (
       <ThemeProvider theme={theme.default}>
-        <Organizer
-          events={this.state.events}
-          initialMonths={this.detectLanguage('months')}
-          initialDays={this.detectLanguage('days')}
-        >
-          {({
-            addCalendarMonth,
-            subCalendarMonth,
-            addCalendarYear,
-            subCalendarYear,
-            getFullMonth,
-            selectDate,
-            reset,
-            date,
-            days,
-            selected,
-            months,
-          }) => {
-            return (
-              <Root>
-                <Toolbar
-                  {...{
-                    view: this.state.view,
-                    reset,
-                    subCalendarMonth,
-                    addCalendarMonth,
-                    getFullMonth,
-                    addCalendarYear,
-                    subCalendarYear,
-                    date,
-                    months,
-                    changeView: this.changeView,
-                  }}
-                />
-                <Sidebar
-                  {...{
-                    addEvent: this.addEvent,
-                    selectDate,
-                    selected,
-                    days,
-                    months,
-                  }}
-                />
-                {this.renderView({ getFullMonth, days })}
-              </Root>
-            );
-          }}
-        </Organizer>
+        <React.Fragment>
+          <GlobalStyle />
+          <Organizer
+            events={this.state.events}
+            initialMonths={this.detectLanguage('months')}
+            initialDays={this.detectLanguage('days')}
+          >
+            {({
+              addCalendarMonth,
+              subCalendarMonth,
+              addCalendarYear,
+              subCalendarYear,
+              getFullMonth,
+              selectDate,
+              reset,
+              date,
+              days,
+              selected,
+              months,
+            }) => {
+              return (
+                <Root>
+                  <Toolbar
+                    {...{
+                      view: this.state.view,
+                      reset,
+                      subCalendarMonth,
+                      addCalendarMonth,
+                      getFullMonth,
+                      addCalendarYear,
+                      subCalendarYear,
+                      date,
+                      months,
+                      changeView: this.changeView,
+                    }}
+                  />
+                  <Sidebar
+                    {...{
+                      addEvent: this.addEvent,
+                      selectDate,
+                      selected,
+                      days,
+                      months,
+                    }}
+                  />
+                  {this.renderView({ getFullMonth, days })}
+                </Root>
+              );
+            }}
+          </Organizer>
+        </React.Fragment>
       </ThemeProvider>
     );
   }
