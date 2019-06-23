@@ -5,12 +5,12 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "@alekna/react-organizer": "^1.0.0",
     "date-fns": "^2.0.0-alpha.20",
     "downshift": "^2.2.3",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-organizer": "^0.0.8",
     "react-scripts": "^2.0.3",
     "styled-components": "^4.0.0-beta.9"
   },

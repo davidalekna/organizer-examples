@@ -1,5 +1,5 @@
 import React from 'react';
-import Organizer from 'react-organizer';
+import Organizer from '@alekna/react-organizer';
 import CalendarBase from '../../components/calendarBase';
 import { addMonths, subMonths } from 'date-fns';
 

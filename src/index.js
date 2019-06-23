@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import GlobalStyle from './reset.css';
 import { ThemeProvider } from 'styled-components';
 import { Root } from './components/globals';
-import Organizer from 'react-organizer';
+import Organizer from '@alekna/react-organizer';
 import theme from './theme';
 import { languages, events } from './helpers';
 import Toolbar from './views/toolbar';
