@@ -50,7 +50,7 @@ export const Root = styled.div`
   width: 100vw;
   height: 100vh;
 
-  background: ${({ theme }) => theme.colours.background};
+  background: ${({ theme }) => theme.colors.background};
 
   grid-template-rows: 65px 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
