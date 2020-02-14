@@ -1,24 +1,29 @@
 export default {
   default: {
-    brand: Object.assign("#4286f4", {
-      alt: "#1c6ced",
-      wash: "rgba(66,134,244,0.3)",
-      border: "#3f89ff",
-      dark: "#07419e"
-    }),
-    bg: Object.assign("#0b0a24", {
-      reverse: "#333333",
-      wash: "#eee",
-      border: "#ddd",
-      inactive: "rgba(242,242,242,0.5)"
-    }),
-    text: Object.assign("#222", {
-      reverse: "#FFFFFF",
-      placeholder: "#A3AFBF",
-      alt: Object.assign("#888", {
-        lighter: "#ddd",
-        darker: "#444"
-      }) // inactive
-    })
+    colors: {
+      background: "#04011c",
+      primary: {
+        100: "#C5CAE9",
+        200: "#9FA8DA",
+        300: "#7986CB",
+        400: "#5C6BC0",
+        500: "#3F51B5",
+        600: "#3949AB",
+        700: "#303F9F",
+        800: "#283593",
+        900: "#1A237E"
+      },
+      neutral: {
+        100: "#F5F5F5",
+        200: "#EEEEEE",
+        300: "#E0E0E0",
+        400: "#BDBDBD",
+        500: "#9E9E9E",
+        600: "#757575",
+        700: "#616161",
+        800: "#424242",
+        900: "#212121"
+      }
+    }
   }
 };

@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const fontStack = css`
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica', 'Segoe',
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica", "Segoe",
     sans-serif;
 `;
 
@@ -50,19 +50,21 @@ export const Root = styled.div`
   width: 100vw;
   height: 100vh;
 
+  background: ${({ theme }) => theme.colours.background};
+
   grid-template-rows: 65px 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
-    'toolbar toolbar toolbar'
-    'calendar calendar calendar'
-    'calendar calendar calendar';
+    "toolbar toolbar toolbar"
+    "calendar calendar calendar"
+    "calendar calendar calendar";
 
   @media (min-width: 1040px) {
     grid-template-rows: 65px 1fr 1fr;
     grid-template-columns: 255px 1fr 1fr;
     grid-template-areas:
-      'toolbar toolbar toolbar'
-      'sidebar calendar calendar'
-      'sidebar calendar calendar';
+      "toolbar toolbar toolbar"
+      "sidebar calendar calendar"
+      "sidebar calendar calendar";
   }
 `;
