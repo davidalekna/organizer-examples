@@ -29,19 +29,17 @@ export default function SideCalendar() {
       initialMonths={months}
     >
       {({ days, getFullMonth }) => (
-        <div style={{ borderBottom: "1px solid #ddd" }}>
-          <CalendarBase
-            style={{ height: 220 }}
-            {...{
-              month: getFullMonth(),
-              days,
-              showNav: true,
-              onPrevClick: () => addMonth(),
-              onNextClick: () => subMonth(),
-              onDayClick: date => selectDate({ date })
-            }}
-          />
-        </div>
+        <CalendarBase
+          style={{ height: 220 }}
+          {...{
+            month: getFullMonth(),
+            days,
+            showNav: true,
+            onPrevClick: subMonth,
+            onNextClick: addMonth,
+            onDayClick: date => selectDate({ date })
+          }}
+        />
       )}
     </Organizer>
   );

@@ -10,6 +10,7 @@ export const Toolbar = styled(FlexRow)`
   justify-content: space-between;
   padding: 0 0 ${({ big }) => (big ? "10px" : "5px")} 10px;
   text-transform: capitalize;
+  color: ${({ theme }) => theme.colors.primary[200]};
 `;
 
 export const Grid = styled.div`
@@ -24,7 +25,8 @@ export const GridItem = styled(FlexRow)`
   justify-content: center;
   font-size: 10px;
   font-weight: 600;
-  color: ${({ darker }) => (darker && "#777") || "#333"};
+  color: ${({ darker, theme }) =>
+    (darker && theme.colors.primary[500]) || theme.colors.primary[300]};
 `;
 
 export const Day = styled(FlexRow)`
@@ -36,12 +38,15 @@ export const Day = styled(FlexRow)`
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: ${({ current, selected }) =>
-    (current && "#4286f4") || (selected && "#777")};
-  color: ${({ current, weekend }) =>
-    (current && "white") || (weekend && "#777")};
+  background: ${({ current, selected, theme }) =>
+    (current && theme.colors.primary[400]) ||
+    (selected && theme.colors.primary[100])};
+  color: ${({ current, weekend, theme }) =>
+    (current && theme.colors.primary[100]) ||
+    (weekend && theme.colors.primary[100])};
   color: ${({ selected }) => selected && "white"};
   &:hover {
-    background: ${({ current, hoverable }) => hoverable && !current && "#eee"};
+    background: ${({ current, hoverable, theme }) =>
+      hoverable && !current && theme.colors.primary[100]};
   }
 `;

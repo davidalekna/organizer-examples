@@ -9,7 +9,7 @@ const Sidebar = () => {
   return (
     <Wrapper>
       <SideCalendar />
-      <div>
+      <div style={{ borderTop: "1px solid grey" }}>
         <ul>
           <li>Publick Holidays</li>
           <li>Calendar 2</li>
