@@ -1,45 +1,48 @@
-import React from 'react';
-import Organizer from '@alekna/react-organizer';
-import CalendarBase from '../../components/calendarBase';
-import { addMonths, subMonths } from 'date-fns';
+import React, { useState, useEffect, useRef } from "react";
+import Organizer, { useOrganizer } from "@alekna/react-organizer";
+import CalendarBase from "../../components/calendarBase";
+import { addMonths, subMonths } from "date-fns";
 
-class SideCalendar extends React.Component {
-  state = { outerDate: this.props.selected || new Date() };
-  addMonth = () =>
-    this.setState(state => ({ outerDate: addMonths(state.outerDate, 1) }));
-  subMonth = () =>
-    this.setState(state => ({ outerDate: subMonths(state.outerDate, 1) }));
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.selected !== this.props.selected) {
-      this.setState({ outerDate: this.props.selected || new Date() });
+export default function SideCalendar() {
+  const { selected, selectDate, days, months } = useOrganizer();
+  const [date, setDate] = useState(selected || new Date());
+
+  const addMonth = () => setDate(now => addMonths(now, 1));
+  const subMonth = () => setDate(now => subMonths(now, 1));
+
+  useEffect(() => {
+    if (prevValues.current !== selected) {
+      setDate(selected || new Date());
     }
-  }
-  render() {
-    return (
-      <Organizer
-        date={this.state.outerDate}
-        selected={this.props.selected}
-        initialDays={this.props.days}
-        initialMonths={this.props.months}
-      >
-        {({ days, getFullMonth }) => (
-          <div style={{ borderBottom: '1px solid #ddd' }}>
-            <CalendarBase
-              style={{ height: 220 }}
-              {...{
-                month: getFullMonth(),
-                days,
-                showNav: true,
-                onPrevClick: () => this.subMonth(),
-                onNextClick: () => this.addMonth(),
-                onDayClick: date => this.props.selectDate({ date }),
-              }}
-            />
-          </div>
-        )}
-      </Organizer>
-    );
-  }
-}
+  }, [selected]);
 
-export default SideCalendar;
+  const prevValues = useRef(undefined);
+  useEffect(() => {
+    prevValues.current = selected;
+  });
+
+  return (
+    <Organizer
+      now={date}
+      selected={selected}
+      initialDays={days}
+      initialMonths={months}
+    >
+      {({ days, getFullMonth }) => (
+        <div style={{ borderBottom: "1px solid #ddd" }}>
+          <CalendarBase
+            style={{ height: 220 }}
+            {...{
+              month: getFullMonth(),
+              days,
+              showNav: true,
+              onPrevClick: () => addMonth(),
+              onNextClick: () => subMonth(),
+              onDayClick: date => selectDate({ date })
+            }}
+          />
+        </div>
+      )}
+    </Organizer>
+  );
+}
